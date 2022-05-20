@@ -1,0 +1,42 @@
+.home_two {
+  display: flex;
+}
+
+.section {
+  text-align: center;
+  width: 33.33333333vw;
+  height: 90vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &.one {
+  background-image: url("dylan.jpg");
+  }
+
+  &.two {
+  background-image: url("colton.jpg");
+  }
+
+
+  &.three {
+  background-image: url("holland.jpg");
+  }
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.section > a {
+  display: inline-block;
+  padding-top: 35vh;
+  color: #ffffff;
+  font-size: 3rem;
+  width: 33.3vw;
+  height: 100vh;
+
+  &:hover {
+  color: #f59e89;
+  }
+}

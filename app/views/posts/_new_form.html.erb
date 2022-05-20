@@ -1,0 +1,50 @@
+<%= form_with(model: post, local: true) do |form| %>
+  <% if @post.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :body %>
+    <%= form.rich_text_area :body, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :category %>
+    <%= form.select :category, Post.categories.map { |k, v| [k.humanize, k]} %> 
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Cover photo" %>
+    <%= form.file_field :cover_photo %>
+  </div>
+
+  <div class="field">
+    <p>
+      <%= form.label :tag_list %>
+      <%= form.text_field :tag_list, value: @post.tags_to_string %>
+    </p>
+  </div>
+
+  <div class="form-group controls">
+    <%= form.submit %>
+
+    <% if @post.persisted? %>
+      <button type="button"><%= link_to 'Cancel', post %></button>
+      <button type="button"><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+    <% else %>
+      <button type="button"><%= link_to 'Cancel', root_path %></button>
+    <% end %>
+  </div>
+<% end %>

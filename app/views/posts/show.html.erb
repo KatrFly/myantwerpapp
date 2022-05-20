@@ -1,0 +1,61 @@
+<div class="show-body">
+  <div class="post-title">
+    <%= @post.title %>
+  </div>
+  <div class="save-post">
+    <% unless user_signed_in? == false %>
+      <% if @saved_post = @post.saved?(current_user) %>
+        <%= link_to "Unsave post", saved_post_path(@saved_post, post: @post), method: :delete %>
+      <% else %>
+        <%= link_to "Save post", saved_posts_path(post_id: @post.id, user_id: current_user.id), method: :post %>
+      <% end %>
+
+      <% if current_user.admin? %>
+      <%= link_to "Edit post", edit_post_path %>
+    <% end %>
+    <% end %>
+  </div>
+
+  <div class="cover-photo">
+    <% if @post.cover_photo.attached? %>
+      <%= image_tag(@post.cover_photo, style:"width: clamp(200px, 75vw, 800px); height: auto") %><br>
+    <% end %>
+  </div>
+  <div class="body">
+    <%= @post.body %>
+  </div>
+
+  <div class="tags">
+    <% @post.tags.each do |tag| %>
+      <%= link_to tag.name.capitalize, tag %>
+    <% end %>
+  </div>
+
+  <div class="comments">
+    <% @post.comments.each do |comment| %>
+      <div class="one-comment">
+        <div class="name">
+          <%= comment.user.first_name %> <%= comment.user.last_name %>: <br>
+        </div>
+        <div class="input">
+          <%= comment.text %>
+          <% if current_user == comment.user %>
+            <%= button_to "Delete", comment_path(comment, post: @post), method: :delete, class: "custom-button" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= form_for @comment do |form| %>
+      <div class="comments-form">
+        <div class="input">
+          <%= form.text_area :text, size: "30x3" %>
+        </div>
+        <%= form.hidden_field :post_id, :value => @post.id %>
+        <div class="submit-button">
+          <%= form.submit "Voeg reactie toe", class: "custom-button submit-comment" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

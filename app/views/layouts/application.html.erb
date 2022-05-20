@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyAntwerpApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/7263c4db27.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="title"><%= link_to "MyAntwerpApp", root_path %></div>
+      <div class="social-media-links">
+        <a href="https://www.instagram.com/antwerpfoodsta/"><i class="fa-brands fa-instagram fa-sm"></i></a>
+        <a href="https://vm.tiktok.com/ZMLPmbMmT/"><i class="fa-brands fa-tiktok fa-sm"></i></a>
+        <a href="mailto: antwerpfoodsta@gmail.com"><i class="fa-solid fa-envelope fa-sm"></i></a>
+      </div>
+      <div class="menu">
+        <% if user_signed_in? && current_user.admin? %>
+          <div class="menu item">
+            <%= link_to "New post", new_post_path %>
+          </div>
+        <% end %>
+        <div class="menu item">
+          <%= link_to "Home", root_path %>
+        </div>
+        <div class="menu item">
+          <%= link_to "About", about_path %>
+        </div>
+        <div class="dropdown">
+            <%= link_to "Food", posts_food_path, :class => "dropdown-button" %>
+          <div class="dropdown-content">
+            <%= link_to "Guides", posts_guides_path %>
+            <%= link_to "Reviews", posts_reviews_path %>
+          </div>
+        </div>
+        <div class="menu item">
+          <%= link_to "Interviews", posts_interviews_path %>
+        </div> 
+      
+        <div class="user-session">
+          <% if user_signed_in? %>
+            <div class="dropdown">
+              <div class="menu item">
+                <%= link_to "#{current_user.first_name} #{current_user.last_name}", edit_user_registration_path, :class => "dropdown-button" %>
+              </div>
+              <div class="dropdown-content u-s">
+                <%= link_to "Saved Posts", saved_posts_path %>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                <%= link_to "Sign out", user_registration_path, :confirm => "Are you sure?", method: :delete %>
+              </div>
+            </div>
+          <% else %>
+            <div class="menu item">
+              <%= link_to "Log in", new_user_session_path %>
+            </div>
+            <div class="menu item">
+              <%= link_to "Sign up", new_user_registration_path %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="page-content">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
+  </body>
+</html>

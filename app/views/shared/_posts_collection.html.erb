@@ -1,0 +1,18 @@
+<div class="saved-posts-grid">
+  <% if posts.empty? %>
+    <div class="nothing-to-see">
+      <%= "There is nothing to display yet." %>
+    </div>
+  <% else %>
+    <% posts.each do |post| %>
+      <div class="one-saved-post">
+        <div class="photo">
+          <% if post.cover_photo.attached? %>
+            <%= link_to image_tag(post.cover_photo, style:"width: 300px; height:auto;"), post_path(post) %><br>
+          <% end %>
+        </div>
+        <%= link_to post.title, post_path(post)  %><br>
+      </div>
+    <% end %>
+  <% end %>
+</div>

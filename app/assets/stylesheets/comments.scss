@@ -1,0 +1,52 @@
+.comments {
+  margin-top: 3rem;
+  align-self: flex-start;
+  color: #0B4141;
+
+  > div > .name {
+    color: #FF6864;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  > div > .input {
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 40vw;
+    overflow: auto;
+  }
+} 
+
+.comments-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit-comment-button {
+  background-color: #0B4141;
+  color: #FFFFFF;
+  font-size: 0.8rem;
+}
+
+.custom-button {
+  border-radius: 10px;
+  padding: 8px 16px;
+  background-color: #FFFFFF;
+  border: black 1px solid;
+  
+  &.submit-comment {
+    color: #FFFFFF;
+    background-color: #0B4141;
+    border: none;
+    font-size: 0.8rem;
+  }
+}
+
+
+.one-comment {
+  div:last-child {
+    margin-bottom: 1rem;
+  }
+}

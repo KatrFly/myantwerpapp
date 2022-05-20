@@ -1,0 +1,23 @@
+<% if posts.empty? %>
+  <div class="nothing-to-see">
+    <%= "nothing to see yet, new posts are coming soon!" %>
+  </div>
+<% else %>
+  <div class="posts">
+    <% posts.each do |post| %>
+      <div class="one-post">
+        <div class="title">
+          <%= post.title %><br>
+        </div>
+        <div class="cover-photo">
+          <% if post.cover_photo.attached? %>
+            <%= link_to image_tag(post.cover_photo, :style => "width: 600px; height: auto"), post_path(post) %><br>
+          <% end %>
+        </div>
+        <div class="text-body">
+          <%= link_to post.body.to_plain_text.truncate(200, separator: ' '), post_path(post) %><br>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

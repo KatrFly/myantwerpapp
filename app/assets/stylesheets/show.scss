@@ -1,0 +1,29 @@
+.show-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: clamp(200px, 75vw, 800px);
+  margin: auto;
+}
+
+.post-title {
+  color: #f59e89;
+  font-size: 36px;
+  margin: 10rem 0 1rem 0;
+}
+
+.body {
+  margin: 40px 0;
+  color: black;
+  font-size: 20px;
+  color: #3d4246;
+}
+
+.save-post {
+  > a {
+  color: #FF6864;
+  font-size: 1.3rem;
+  }
+
+  margin-bottom: 7rem;
+}
