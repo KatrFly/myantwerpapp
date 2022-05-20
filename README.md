@@ -11,5 +11,5 @@ Test the website with some pre-made accounts:\
   email: admin@user.com, password: AdminUser
   
   
-This repo contains only 2 commits because of sensitive information being present in the original repositories older commits.
-The old repository was cloned and all .git files were removed so I could then re-init git and push the new repo out as public.
+This repository contains only 2 commits because of sensitive information being present in the original repositories older commits.
+The old repository was cloned and all .git files were removed so I could then re-init git and push this new repository out as public.
