@@ -9,3 +9,7 @@ Live link: https://evening-wildwood-94150.herokuapp.com
 Test the website with some pre-made accounts:\
   email: test@user.com, password: TestUser\
   email: admin@user.com, password: AdminUser
+  
+  
+This repo contains only 2 commits because of sensitive information being present in the original repositories older commits.
+The old repository was cloned and all .git files were removed so I could then re-init git and push the new repo out as public.
